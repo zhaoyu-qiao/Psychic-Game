@@ -4,54 +4,57 @@
 
 //[allLettersArray(26)].reduce(a => a + String.fromCharCode(i++), '', i = 97);
 //console.log(allLettersArray);
-for (char c = 'a'; c <= 'z'; c++) {
-    alphabet[c - 'a'] = c;
-    console.log(c);
-}
+
 
 let allLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
+console.log(allLettersArray);
 //Create variables to hold wins, loses, remaining guesss, letterGuessed
-let wins = 0;
+let wins = 0; // window or root scope
 let loses = 0;
 let lives = 7;
 //let letterGuessed = "";
+console.log(wins);
 
 
 //Link placeholder in html to the js input, vs code wants me to put it in a function?
-let winText = document.getElementById("num-of-wins");
+let winText = document.getElementById("num-of-wins"); //window or root scope
 let loseText = document.getElementById("num-of-loses");
 let livesText = document.getElementById("remaining-guesses");
 let letterGuessedText = document.getElementById("user-guesses");
 let messageText = document.getElementById("output");
 
 //Create object message to hold user communications
-
+//root scope
 let message = {
-    start: "Press key a to z to start!",
+    start: "Press a key from a to z to start!",
     invalidKey: "Please choose a key from a to z!",
     correctGuess: "Our minds are connected!<3",
     wrongGuess: "You don't know me at all!"
 }
+console.log(message.start);
 
-//start to guess:
-document.onkeyup = function (event) {
+//start to guess - from now within the function it has its own scope
+document.onkeyup = function pressKey(event) {
 
     let letterGuessed = "";
     //store user input key:
     let userGuessKey = event.key;
     console.log(userGuessKey)
-
-    //store compute choice index in the allLetterArray
-    let computerChoiceIndex = Math.floor(Math.random) * allLettersArray.length;
+    //console.log(allLettersArray);
+    //store the index(position) of computer choice in the allLetterArray
+    let computerChoiceIndex = Math.floor(Math.random() * allLettersArray.length);
+    console.log(computerChoiceIndex); // needs to be a number
     //let computerChoice = allLettersArray[computerChoiceIndex];
 
 
     //compare between the two values and take actions
     //If userGuessKey is not in [a-z] at all
-    if (allLettersArray.indexOf[userGuessKey] === -1) { // this seems to be wrong
+    if (allLettersArray.indexOf[userGuessKey] < 0) { // this seems to be *wrong*, console log is always showing wrong guess
         //return message invalidKey
+        console.log(message.invalidKey);
+
         return message.invalidKey;
+
     } else {
         //for loop within 7 lives, otherwise need to restart
         for (let i = 0; i < 7; i++) {
@@ -59,16 +62,19 @@ document.onkeyup = function (event) {
             if (letterGuessed === allLettersArray[computerChoiceIndex]) {
                 console.log(letterGuessed);
                 console.log("Correct guess");
+                wins++; //Needs to put this in front of return, or it would never run.
                 return message.correctGuess;
-                wins++; //???????????????
+
             } else {
                 console.log("Wrong guess");
+                loses++;
+
                 return message.wrongGuess;
             }
         }
     }
 
-
+    pressKey();
 
 
 

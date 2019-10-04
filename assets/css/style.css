@@ -1,0 +1,31 @@
+html {
+    font-family: 'Dancing Script', cursive, Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive, Arial, Helvetica, sans-serif;
+    color: #ecd8dc;
+    font-size: 5rem;
+    width: 100%;
+    padding: 60px;
+    text-align: center;
+    background-image: url("../images/final-stars.png");
+    /*motion-rotation: 50% 50%;
+    orientation: 90deg;*/
+}
+
+p {
+    font-family: 'Dancing Script', cursive, Arial, Helvetica, sans-serif;
+    color: #eee4ec;
+    font-size: 1.5rem;
+    padding: 1.5em;
+}
+
+/*font-family: 'Dancing Script', cursive;
+font-family: 'Kaushan Script', cursive;
+font-family: 'Sacramento', cursive;*/
